@@ -1,0 +1,30 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+  release:
+    types:
+    - published
+
+jobs:
+
+  build-and-check:
+    uses: ./.github/workflows/build.yml
+
+  publish:
+    needs: [ build-and-check ]
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      # IMPORTANT: this permission is mandatory for trusted publishing
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: artifact
+          path: dist
+      - name: Publish
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          skip-existing: true
+          repository-url: https://test.pypi.org/legacy/

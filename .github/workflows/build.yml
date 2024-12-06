@@ -1,0 +1,39 @@
+name: Build
+
+on:
+  pull_request:
+    branches: [ "main" ]
+  merge_group:
+    types: [ checks_requested ]
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Build SDist & wheel
+      run: pipx run build
+
+    - uses: actions/upload-artifact@v4
+      with:
+        path: dist/*
+
+  check:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: artifact
+          path: dist
+
+      - name: validate SDist & wheel
+        run: pipx run twine check dist/*

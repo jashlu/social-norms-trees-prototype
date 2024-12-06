@@ -1,0 +1,140 @@
+{
+    "pick_up_medicine": {
+        "context": "Atlas is assigned to retrieve medicine A from the medicine cabinet. Atlas is currently on the third floor near the nurse's desk. The medicine cabinet is located in the pharmacy room on the third floor. The medicine cabinet has a total 5 stock for medicine A. To retrieve medicine from the pharmacy room, qualified personnel must communicate with the pharmacist at the door and request the medicine they require.",
+        "children": [
+            "take_path_to_medicine_cabinet",
+            "unlock_cabinet",
+            "retrieve_medicine"
+        ],
+        "behavior_library": [
+            {
+                "id": "take_path_to_medicine_cabinet",
+                "name": "take acceptable path to the medicine cabinet",
+                "in_behavior_bank": false
+            },
+            {
+                "id": "unlock_cabinet",
+                "name": "unlock the cabinet"
+            },
+            {
+                "id": "retrieve_medicine",
+                "name": "retrieve the medicine"
+            },
+            {
+                "id": "wait_for_cabinet_access",
+                "name": "wait at medicine cabinet until it is accessible",
+                "in_behavior_bank": true
+            },
+            {
+                "id": "alert_adminstrator",
+                "name": "alert adminstrator for assistance",
+                "in_behavior_bank": true
+            },
+            {
+                "id": "request_medicine",
+                "name": "request required medicine from pharmacist",
+                "in_behavior_bank": true
+            }
+        ],
+        "interruptions": {
+            "take_path_to_medicine_cabinet": "While moving toward the medicine cabinet, the robot is interrupted by a visitor: “Hello, I’m looking for room 536 to visit John. Can you help me find the way?”",
+            "unlock_cabinet": "Upon reaching the cabinet, the robot finds it locked and is unable to electronically open it with the password."
+        }
+    },
+    "travel_to_desired_floor": {
+        "context": "Atlas has the medicine in it's posession. Atlas is now assigned to travel to Patient P's Room. Patient P is in room 405, which is on the 4th floor. Atlas is currently located on the 3rd floor in the medicine room. Atlas is designed to fit in conventional elevators. The capacity of the hospital elevator is 1500 lbs based on an average passenger weight of 150 lbs. There are currently 0 occupants in the elevator.",
+        "children": [
+            "take_path_to_elevator",
+            "get_into_elevator",
+            "press_correct_floor_button",
+            "exit_elevator"
+        ],
+        "behavior_library": [
+            {
+                "id": "take_path_to_elevator",
+                "name": "take acceptable path to the elevator",
+                "in_behavior_bank": false
+            },
+            {
+                "id": "get_into_elevator",
+                "name": "get into the elevator",
+                "in_behavior_bank": false
+            },
+            {
+                "id": "press_correct_floor_button",
+                "name": "press the correct floor button",
+                "in_behavior_bank": false
+            },
+            {
+                "id": "exit_elevator",
+                "name": "exit the elevator",
+                "in_behavior_bank": false
+            },
+            {
+                "id": "announce_presence_and_task",
+                "name": "announce its presence and task",
+                "in_behavior_bank": true
+            },
+            {
+                "id": "wait_for_empty_elevator",
+                "name": "wait for elevator that has no occupants",
+                "in_behavior_bank": true
+            },
+            {
+                "id": "alert_adminstrator",
+                "name": "alert adminstrator for assistance",
+                "in_behavior_bank": true
+            }
+        ],
+        "interruptions": {
+            "take_path_to_medicine_cabinet": "While moving toward the medicine cabinet, the robot is interrupted by a visitor: “Hello, I’m looking for room 536 to visit John. Can you help me find the way?”",
+            "unlock_cabinet": "Upon reaching the cabinet, the robot finds it locked and is unable to electronically open it with the password."
+        }
+    },
+    "deliver_the_medicine": {
+        "context": "Atlas has the medicine in it's possession. Atlas is now assigned to deliver the medicine to Patient P. Atlas is on the 4th floor, outside the elevator lobby. Patient P is in room 405 and the door to Patient P's room is purposely left open for nurses to keep a constant eye on the patient.",
+        "children": [
+            "take_path_to_patient_room",
+            "enter_room",
+            "hand_medicine_to_patient"
+        ],
+        "behavior_library": [
+            {
+                "id": "take_path_to_patient_room",
+                "name": "take acceptable path to the patient room",
+                "in_behavior_bank": false
+            },
+            {
+                "id": "enter_room",
+                "name": "enter the patient's room",
+                "in_behavior_bank": false
+            },
+            {
+                "id": "hand_medicine_to_patient",
+                "name": "hand the medicine to the patient",
+                "in_behavior_bank": false
+            },
+            {
+                "id": "announce_presence_and_task",
+                "name": "announce its presence and task",
+                "in_behavior_bank": true
+            },
+            {
+                "id": "knock_on_door",
+                "name": "knock on the door",
+                "in_behavior_bank": true
+            },
+            {
+                "id": "open_room_door",
+                "name": "open the door",
+                "in_behavior_bank": true
+            },
+            {
+                "id": "alert_adminstrator",
+                "name": "alert adminstrator for assistance",
+                "in_behavior_bank": true
+            }
+        ],
+        "interruptions": {}
+    }
+}
